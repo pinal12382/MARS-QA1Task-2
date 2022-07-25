@@ -11,50 +11,85 @@ namespace MarsQA_1.Utilities
 {
     internal class Wait
     {
-        public static void WaitbyClick(IWebDriver driver,string locator,string locatorValue, int second)
+        public static IWebDriver driver { get; set; }
+
+        //public static void wait(int time)
+        //{
+        //    driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(time);
+
+        //}
+        //public static IWebElement WaitbyClick(IWebDriver driver, By by, int timeOutinSeconds)
+        //{
+        //    WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeOutinSeconds));
+        //    return (wait.Until(ExpectedConditions.ElementIsVisible(by)));
+        //}
+
+        public static void WaitbyClick(IWebDriver driver, string locator, string locatorValue, int second)
         {
-            var wait = new WebDriverWait(driver,new TimeSpan(0,0,0,second));
-           
-                        if (locator == "XPath")
-            {
-                wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(locatorValue)));
-            }
-            if (locator == "ID")
-            {
-                wait.Until(ExpectedConditions.ElementToBeClickable(By.Id(locatorValue)));
-            }
-            if (locator == "CssSelector")
-            {
-                wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector(locatorValue)));
-            }
-            if (locator == "Name")
-            {
-                wait.Until(ExpectedConditions.ElementToBeClickable(By.Name(locatorValue)));
-            }
+
+
+            var Wait = new WebDriverWait(driver, new TimeSpan(0, 0, 0, second));
 
 
             if (locator == "XPath")
             {
-                wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(locatorValue)));
+                Wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(locatorValue)));
             }
             if (locator == "ID")
             {
-                wait.Until(ExpectedConditions.ElementIsVisible(By.Id(locatorValue)));
+                Wait.Until(ExpectedConditions.ElementToBeClickable(By.Id(locatorValue)));
             }
             if (locator == "CssSelector")
             {
-                wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector(locatorValue)));
-
+                Wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector(locatorValue)));
             }
-            if(locator == "Name")
+            if (locator == "Name")
             {
-                wait.Until(ExpectedConditions.ElementIsVisible(By.Name(locatorValue)));
+                Wait.Until(ExpectedConditions.ElementToBeClickable(By.Name(locatorValue)));
             }
-                
+
+            if (locator == "LinkText")
+            {
+                Wait.Until(ExpectedConditions.ElementToBeClickable(By.LinkText(locatorValue)));
+            }
+
+
 
 
 
 
         }
+
+        public static void WaitToBeVisible(IWebDriver mydriver, string locator, string locatorValue, int second)
+        {
+            var Wait = new WebDriverWait(mydriver, new TimeSpan(0, 0, second));
+            if (locator == "XPath")
+            {
+                Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(locatorValue)));
+            }
+            if (locator == "Id")
+            {
+                Wait.Until(ExpectedConditions.ElementIsVisible(By.Id(locatorValue)));
+
+            }
+            if (locator == "CssSelector")
+            {
+                Wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector(locatorValue)));
+
+            }
+            if (locator == "Name")
+            {
+                Wait.Until(ExpectedConditions.ElementToBeClickable(By.Name(locatorValue)));
+            }
+
+            if (locator == "LinkText")
+            {
+                Wait.Until(ExpectedConditions.ElementToBeClickable(By.LinkText(locatorValue)));
+            }
+
+        }
+
     }
-}
+    }
+    
+
