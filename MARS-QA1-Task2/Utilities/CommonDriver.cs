@@ -63,11 +63,12 @@ namespace MarsQA_1.Utilities
 
             var test1 = extent.StartTest("SignInTest1", "sign");
             test1.Log(LogStatus.Info, "Image example: " + img);
-            extent.EndTest(test);
-            extent.Flush();
+            //extent.EndTest(test);
+            //extent.Flush();
             // end test. (Reports)
-            driver.Close();
-            driver.Quit();
+
+               // driver.Close();
+                driver.Quit();
                
 
 
